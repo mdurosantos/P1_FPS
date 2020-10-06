@@ -277,7 +277,7 @@ MonoBehaviour:
   mSpeedYaw: 10
   mSpeedPitch: 10
   mMinPitch: -80
-  mMaxPitch: 80
+  mMaxPitch: 50
   mPitchController: {fileID: 5480015970512988412}
   mInvertPitch: 1
   mInvertYaw: 0
@@ -307,15 +307,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8278363145027330059, guid: a1ce908bd03ca8d4d88b6f274062a0ba, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.19
+      value: 0.16
       objectReference: {fileID: 0}
     - target: {fileID: 8278363145027330059, guid: a1ce908bd03ca8d4d88b6f274062a0ba, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.99
+      value: 1.02
       objectReference: {fileID: 0}
     - target: {fileID: 8278363145027330059, guid: a1ce908bd03ca8d4d88b6f274062a0ba, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.368
+      value: 0.37
       objectReference: {fileID: 0}
     - target: {fileID: 8278363145027330059, guid: a1ce908bd03ca8d4d88b6f274062a0ba, type: 3}
       propertyPath: m_LocalRotation.x
@@ -348,6 +348,18 @@ PrefabInstance:
     - target: {fileID: 8278363145027330059, guid: a1ce908bd03ca8d4d88b6f274062a0ba, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8278363145027330059, guid: a1ce908bd03ca8d4d88b6f274062a0ba, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8278363145027330059, guid: a1ce908bd03ca8d4d88b6f274062a0ba, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8278363145027330059, guid: a1ce908bd03ca8d4d88b6f274062a0ba, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1ce908bd03ca8d4d88b6f274062a0ba, type: 3}
