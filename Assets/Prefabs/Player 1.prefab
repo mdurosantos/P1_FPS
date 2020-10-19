@@ -204,6 +204,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2856a437c2bb3fd48a9279cc9ef71355, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_DebugLockAngleKeyCode: 105
+  m_DebugLockKeyCode: 111
   mSpeedYaw: 10
   mSpeedPitch: 10
   mMinPitch: -80
@@ -235,6 +237,8 @@ MonoBehaviour:
   initialSpeed_y: 50
   fireRate: 0.1
   ammoText: {fileID: 0}
+  decalsPool: {fileID: 0}
+  bulletsPool: {fileID: 0}
 --- !u!1 &5640430805443587573
 GameObject:
   m_ObjectHideFlags: 0
