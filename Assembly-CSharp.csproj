@@ -77,6 +77,7 @@
      <Compile Include="Assets\DreamForestTree\PostProcessing\Runtime\Utils\GraphicsUtils.cs" />
      <Compile Include="Assets\DreamForestTree\PostProcessing\Runtime\Components\BloomComponent.cs" />
      <Compile Include="Assets\DreamForestTree\PostProcessing\Runtime\Models\FogModel.cs" />
+     <Compile Include="Assets\Recharge.cs" />
      <Compile Include="Assets\DreamForestTree\PostProcessing\Runtime\Models\VignetteModel.cs" />
      <Compile Include="Assets\EffectExamples\TutorialInfo\Scripts\Readme.cs" />
      <Compile Include="Assets\Scripts\dasda.cs" />
@@ -98,6 +99,7 @@
      <Compile Include="Assets\target_controller.cs" />
      <Compile Include="Assets\DreamForestTree\PostProcessing\Runtime\Components\UserLutComponent.cs" />
      <Compile Include="Assets\DreamForestTree\PostProcessing\Runtime\Models\AmbientOcclusionModel.cs" />
+     <Compile Include="Assets\pruea.cs" />
      <None Include="Assets\Samples\Terrain Tools\0.1.0-preview\Terrain Assets\ThirdPartyNotices.txt" />
      <None Include="Assets\DreamForestTree\PostProcessing\Resources\Shaders\ScreenSpaceReflection.shader" />
      <None Include="Assets\DreamForestTree\PostProcessing\Resources\Shaders\GrainGen.shader" />

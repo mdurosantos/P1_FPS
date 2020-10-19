@@ -10,73 +10,51 @@ public class FPSController : MonoBehaviour
     float mPitch;
     bool mDoJump = false;
     [Header("Rotation")]
-    [SerializeField]
-    float mSpeedYaw;
-    [SerializeField]
-    float mSpeedPitch;
-    [SerializeField]
-    float mMinPitch;
-    [SerializeField]
-    float mMaxPitch;
-    [SerializeField]
-    GameObject mPitchController;
-    [SerializeField]
-    bool mInvertPitch;
-    [SerializeField]
-    bool mInvertYaw;
+    [SerializeField] float mSpeedYaw;
+    [SerializeField] float mSpeedPitch;
+    [SerializeField] float mMinPitch;
+    [SerializeField] float mMaxPitch;
+    [SerializeField] GameObject mPitchController;
+    [SerializeField] bool mInvertPitch;
+    [SerializeField] bool mInvertYaw;
 
     [Header("Move")]
     private CharacterController mCharacterController;
-    [SerializeField]
-    float mMoveSpeed;
+    [SerializeField] float mMoveSpeed;
     public KeyCode mForwardKey = KeyCode.W;
     public KeyCode mBackKey = KeyCode.S;
     public KeyCode mRightKey = KeyCode.D;
     public KeyCode mLeftKey = KeyCode.A;
+    public KeyCode mReloadKey = KeyCode.R;
     public KeyCode mJumpKey = KeyCode.Space;
     public KeyCode mRunKey = KeyCode.LeftShift;
-
-    [SerializeField]
-    bool mOnGround;
-    [SerializeField]
-    bool mContactCeiling;
-
-    [SerializeField]
-    float mRunMultiplier;
+    [SerializeField] bool mOnGround;
+    [SerializeField] bool mContactCeiling;
+    [SerializeField] float mRunMultiplier;
+    private bool running = false;
     float mVerticalSpeed = 0.0f;
+    
     [Header("Jump")]
-    [SerializeField]
-    float mHeightJump;
-    [SerializeField]
-    float mHalfLengthJump;
-    [SerializeField]
-    float mDownGravityMultiplier;
+    [SerializeField] float mHeightJump;
+    [SerializeField] float mHalfLengthJump;
+    [SerializeField] float mDownGravityMultiplier;
 
     [Header("Weapon")]
-    [SerializeField]
-    WeaponStats weaponStats;
-    [SerializeField]
-    LayerMask layerMask;
-    [SerializeField]
-    Transform gunPositioner;
-    [SerializeField]
-    Transform gunExpeller;
-    [SerializeField]
-    float initialSpeed_x = 50.0f;
-    [SerializeField]
-    float initialSpeed_y = 100.0f;
-
-    [SerializeField]
-    float fireRate = 1.0f;
+    [SerializeField] WeaponStats weaponStats;
+    [SerializeField] LayerMask layerMask;
+    [SerializeField] Transform gunPositioner;
+    [SerializeField] Transform gunExpeller;
+    [SerializeField] float initialSpeed_x = 50.0f;
+    [SerializeField] float initialSpeed_y = 100.0f;
+    [SerializeField] float fireRate = 1.0f;
     Animator weaponAnimator;
     float nextFire = 0.0f;
-
-    private int bulletsInMag = 36;
+    private int bulletsInMag = 32;
     private int bulletsLeft = 150;
+    private bool recharging = false;
+    private bool shooting = false;
 
-
-    [SerializeField]
-    Text ammoText;
+    [SerializeField] Text ammoText;
 
 
     private void OnEnable()
@@ -102,14 +80,24 @@ public class FPSController : MonoBehaviour
     {
 
         if (CanJump()) mDoJump = true;
-        if (Input.GetMouseButton(0) && Time.time > nextFire) //Input.GetMouseButtonDown(0)
+        
+        if(Input.GetKeyDown(mReloadKey) && bulletsInMag < weaponStats.maxBulletsPerRound && bulletsLeft > 0)
         {
-            nextFire = Time.time + fireRate;
-            weaponAnimator.SetBool("shooting", true);
-            Shoot();  
+            Recharge();
         }
+        
+        if (Input.GetMouseButton(0) && bulletsInMag > 0)
+        {
+            if(Time.time > nextFire)
+            {
+                nextFire = Time.time + fireRate;
+                Shoot();  
+            }
+        }
+        
         else 
         {
+            shooting = false;
             weaponAnimator.SetBool("shooting", false);
         }
     }
@@ -150,7 +138,19 @@ public class FPSController : MonoBehaviour
 
 
         lMovement.Normalize();
-        lMovement *= mMoveSpeed * Time.fixedDeltaTime * (Input.GetKey(mRunKey) ? mRunMultiplier:1.0f);
+
+        if(Input.GetKey(mRunKey) && !lMovement.Equals(new Vector3()))
+        {
+            running = !shooting;
+        }
+        else
+        {
+            running = false;
+        }
+
+        weaponAnimator.SetBool("running", running);
+
+        lMovement *= mMoveSpeed * Time.fixedDeltaTime * (running ? mRunMultiplier:1.0f);
 
         float gravity = -2 * mHeightJump * mMoveSpeed * mRunMultiplier * mMoveSpeed * mRunMultiplier / (mHalfLengthJump * mHalfLengthJump);
         if (mVerticalSpeed < 0) gravity *= mDownGravityMultiplier;
@@ -177,28 +177,31 @@ public class FPSController : MonoBehaviour
 
     private void Shoot()
     {
-        if(Physics.Raycast(Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0.0f)), out RaycastHit hitInfo, weaponStats.maxWeaponDist, layerMask))
+        if(!recharging)
         {
-            
-            if (bulletsInMag > 0)
+            if(bulletsInMag > 0)
             {
-                bulletsInMag --; 
-                //ShootParticles();
+                shooting = true;
+                weaponAnimator.SetBool("shooting", true);
+                bulletsInMag --;
                 ExpellBulets();
-                ImpactParticles(hitInfo.point, hitInfo.normal);
-
-                if (hitInfo.transform.gameObject.GetComponent<DamageTaker>() != null)
+                ShootParticles();
+                
+                if(Physics.Raycast(Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0.0f)), out RaycastHit hitInfo, weaponStats.maxWeaponDist, layerMask))
                 {
-                    hitInfo.transform.gameObject.GetComponent<DamageTaker>().TakeDamage(weaponStats.damage);
+                    ImpactParticles(hitInfo.point, hitInfo.normal);
+                    if (hitInfo.transform.gameObject.GetComponent<DamageTaker>() != null)
+                    {
+                        hitInfo.transform.gameObject.GetComponent<DamageTaker>().TakeDamage(weaponStats.damage);
+                    }
                 }
 
-                Debug.Log(bulletsInMag + " / " + bulletsLeft);
-                ammoText.text = bulletsInMag + " / " + bulletsLeft;
-            }
+                UpdateBulletsCounter();
 
-            else
-            {
-                Recharge();
+                if (bulletsInMag == 0 && bulletsLeft > 0)
+                {   
+                    Recharge();
+                }
             }
         }
     }
@@ -207,11 +210,14 @@ public class FPSController : MonoBehaviour
     {
         GameObject clone = Instantiate(weaponStats.gunShells, gunExpeller.position, Quaternion.identity);
         clone.GetComponent<Rigidbody>().AddForce(transform.right * initialSpeed_x + transform.up * initialSpeed_y);
+        Physics.IgnoreCollision(clone.GetComponent<Collider>(), GetComponent<Collider>());
     }
 
     private void ShootParticles()
     {
-        Instantiate(weaponStats.gunImpactParticles, gunPositioner.position, Quaternion.identity);
+        GameObject clone = Instantiate(weaponStats.gunImpactParticles, gunPositioner.position, Quaternion.identity);
+        //clone.transform.parent = gunPositioner.transform;
+        Destroy(clone, clone.GetComponent<ParticleSystem>().main.duration);
     }
 
     private void ImpactParticles(Vector3 point, Vector3 normal)
@@ -221,26 +227,40 @@ public class FPSController : MonoBehaviour
 
     private void Recharge ()
     {
-        if (bulletsLeft > 0)
-        {
-            int count = bulletsLeft - weaponStats.maxBulletsPerRound;
-            if (count >= 0)
-            {
-                bulletsLeft -= weaponStats.maxBulletsPerRound; 
-                bulletsInMag = weaponStats.maxBulletsPerRound;
-            }
-            else 
-            {
-                bulletsLeft = 0;
-                bulletsInMag = count + weaponStats.maxBulletsPerRound;
-            }
-        }
+        //shooting = false;
+        weaponAnimator.SetBool("shooting", false);
 
+        recharging = true;
+        weaponAnimator.SetBool("recharging", true);
+        
+        int bulletsToReload = weaponStats.maxBulletsPerRound - bulletsInMag; 
+        
+        if (bulletsLeft - bulletsToReload >= 0)
+        {
+            bulletsInMag += bulletsToReload;
+            bulletsLeft -= bulletsToReload;
+        }
         else 
         {
-            Debug.Log("Out of Ammo");
+            bulletsInMag += bulletsLeft;
+            bulletsLeft = 0;
         }
-        
+    }
+
+    public void EndReload()
+    {
+        recharging = false;
+        weaponAnimator.SetBool("recharging", false);
+        UpdateBulletsCounter();
+    }
+
+    private void UpdateBulletsCounter()
+    {
+        ammoText.text = bulletsInMag + " / " + bulletsLeft;
+        if(bulletsLeft == 0 && bulletsInMag == 0)
+        {
+            ammoText.color = Color.red;
+        }
     }
 
 }

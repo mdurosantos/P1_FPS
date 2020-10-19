@@ -16,4 +16,5 @@ public class WeaponStats : ScriptableObject
     [SerializeField]
     public float damage = 30.0f;
     [SerializeField] public int maxBulletsPerRound;
+    [SerializeField] public float rechargeTime;
 }

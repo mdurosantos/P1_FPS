@@ -18,5 +18,4 @@ MonoBehaviour:
   gunShells: {fileID: 7488308128283619258, guid: 7d293d8310ce55840a37a74ce9178b49, type: 3}
   damage: 30
   maxBulletsPerRound: 32
-  bulletsInMag: 98
-  bulletsLeft: -66
+  rechargeTime: 2
