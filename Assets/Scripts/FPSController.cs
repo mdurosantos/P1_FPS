@@ -6,6 +6,11 @@ using UnityEngine.UI;
 
 public class FPSController : MonoBehaviour
 {
+    public KeyCode m_DebugLockAngleKeyCode = KeyCode.I;
+    public KeyCode m_DebugLockKeyCode = KeyCode.O;
+    bool m_AimLocked = true;
+    bool m_AngleLocked = false;
+
     float mYaw;
     float mPitch;
     bool mDoJump = false;
@@ -56,6 +61,9 @@ public class FPSController : MonoBehaviour
 
     [SerializeField] Text ammoText;
 
+    [SerializeField] ObjectPool decalsPool;
+    [SerializeField] ObjectPool bulletsPool;
+
 
     private void OnEnable()
     {
@@ -100,6 +108,8 @@ public class FPSController : MonoBehaviour
             shooting = false;
             weaponAnimator.SetBool("shooting", false);
         }
+
+        CheckLockCursor();
     }
 
 
@@ -208,7 +218,11 @@ public class FPSController : MonoBehaviour
 
     private void ExpellBulets() 
     {
-        GameObject clone = Instantiate(weaponStats.gunShells, gunExpeller.position, Quaternion.identity);
+        //GameObject clone = Instantiate(weaponStats.gunShells, gunExpeller.position, Quaternion.identity);
+        GameObject clone = bulletsPool.GetNextElement();
+        clone.transform.position = gunExpeller.position;
+        clone.transform.rotation = Quaternion.identity;
+        
         clone.GetComponent<Rigidbody>().AddForce(transform.right * initialSpeed_x + transform.up * initialSpeed_y);
         Physics.IgnoreCollision(clone.GetComponent<Collider>(), GetComponent<Collider>());
     }
@@ -218,11 +232,16 @@ public class FPSController : MonoBehaviour
         GameObject clone = Instantiate(weaponStats.gunImpactParticles, gunPositioner.position, Quaternion.identity);
         //clone.transform.parent = gunPositioner.transform;
         Destroy(clone, clone.GetComponent<ParticleSystem>().main.duration);
+    
     }
 
     private void ImpactParticles(Vector3 point, Vector3 normal)
     {
         Instantiate(weaponStats.impactParticles, point, Quaternion.LookRotation(normal));
+
+        var decal = decalsPool.GetNextElement();
+        decal.transform.position = point;
+        decal.transform.forward = normal;
     }
 
     private void Recharge ()
@@ -260,6 +279,26 @@ public class FPSController : MonoBehaviour
         if(bulletsLeft == 0 && bulletsInMag == 0)
         {
             ammoText.color = Color.red;
+        }
+    }
+
+    private void OnApplicationFocus(bool focus)
+    {
+        if (m_AimLocked)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+    }
+    private void CheckLockCursor()
+    {
+        if (Input.GetKeyDown(m_DebugLockAngleKeyCode)) m_AngleLocked = !m_AngleLocked;
+        if (Input.GetKeyDown(m_DebugLockKeyCode))
+        {
+            if (Cursor.lockState == CursorLockMode.Locked)
+                Cursor.lockState = CursorLockMode.None;
+            else
+                Cursor.lockState = CursorLockMode.Locked;
+            m_AimLocked = Cursor.lockState == CursorLockMode.Locked;
         }
     }
 
