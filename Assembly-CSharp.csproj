@@ -67,6 +67,7 @@
      <Compile Include="Assets\DreamForestTree\PostProcessing\Runtime\Utils\ColorGradingCurve.cs" />
      <Compile Include="Assets\DreamForestTree\PostProcessing\Runtime\Models\MotionBlurModel.cs" />
      <Compile Include="Assets\Scripts\FPSController.cs" />
+     <Compile Include="Assets\target_script.cs" />
      <Compile Include="Assets\DreamForestTree\PostProcessing\Runtime\Models\GrainModel.cs" />
      <Compile Include="Assets\DreamForestTree\PostProcessing\Runtime\Components\AmbientOcclusionComponent.cs" />
      <Compile Include="Assets\DreamForestTree\PostProcessing\Runtime\Components\TaaComponent.cs" />
@@ -105,7 +106,7 @@
      <Compile Include="Assets\Drone_eye_damage.cs" />
      <Compile Include="Assets\DreamForestTree\PostProcessing\Runtime\Models\AmbientOcclusionModel.cs" />
      <Compile Include="Assets\Drone_Health.cs" />
-     <Compile Include="Assets\target_script.cs" />
+     <Compile Include="Assets\RestartButton.cs" />
      <None Include="Assets\Samples\Terrain Tools\0.1.0-preview\Terrain Assets\ThirdPartyNotices.txt" />
      <None Include="Assets\DreamForestTree\PostProcessing\Resources\Shaders\ScreenSpaceReflection.shader" />
      <None Include="Assets\DreamForestTree\PostProcessing\Resources\Shaders\GrainGen.shader" />

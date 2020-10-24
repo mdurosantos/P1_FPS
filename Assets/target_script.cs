@@ -13,11 +13,21 @@ public class target_script : MonoBehaviour, DamageTaker
     public void Awake()
     {
         animator = GetComponent<Animator>();
-        animator.SetBool(animation_name, true);
+        
     }
 
     public void TakeDamage(float damage)
     {
         shootingGallery.GetComponent<ShootingGallery>().ScorePoitns(points);
+    }
+
+    public void EnableTarget()
+    {
+        animator.SetBool(animation_name, true);
+    }
+
+    public void DisableTarget()
+    {
+        animator.SetBool(animation_name, false);
     }
 }
