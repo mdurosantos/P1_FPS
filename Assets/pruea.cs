@@ -8,6 +8,6 @@ public class pruea : MonoBehaviour
     
     public void EndReload()
     {
-        player.GetComponent<FPSController>().EndReload();
+        player.GetComponent<PlayerShoot>().EndReload();
     }
 }

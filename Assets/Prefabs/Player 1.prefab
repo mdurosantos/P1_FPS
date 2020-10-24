@@ -151,6 +151,8 @@ GameObject:
   - component: {fileID: 5640430804819940509}
   - component: {fileID: 5640430804819940508}
   - component: {fileID: 5640430804819940511}
+  - component: {fileID: 209878342336023295}
+  - component: {fileID: 7613299304142289372}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Untagged
@@ -218,7 +220,6 @@ MonoBehaviour:
   mBackKey: 115
   mRightKey: 100
   mLeftKey: 97
-  mReloadKey: 114
   mJumpKey: 32
   mRunKey: 304
   mOnGround: 0
@@ -227,15 +228,40 @@ MonoBehaviour:
   mHeightJump: 2
   mHalfLengthJump: 4
   mDownGravityMultiplier: 3
+--- !u!114 &209878342336023295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5640430804819940510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0edc15e58fbade14a85362b49c642bb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7613299304142289372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5640430804819940510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5bae7541719e3d4582353d5baed738e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mReloadKey: 114
   weaponStats: {fileID: 11400000, guid: 23bebb5c4d7a93b4da35f98f974d771c, type: 2}
   layerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 535
   gunPositioner: {fileID: 7523010706956080130}
   gunExpeller: {fileID: 7523010707999774570}
   initialSpeed_x: 50
-  initialSpeed_y: 50
-  fireRate: 0.1
+  initialSpeed_y: 100
+  fireRate: 0.15
   ammoText: {fileID: 0}
   decalsPool: {fileID: 0}
   bulletsPool: {fileID: 0}

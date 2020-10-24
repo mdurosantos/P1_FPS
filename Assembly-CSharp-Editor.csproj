@@ -60,46 +60,46 @@
     <UnityVersion>2020.1.4f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\DreamForestTree\PostProcessing\Editor\Models\BloomModelEditor.cs" />
-    <Compile Include="Assets\DreamForestTree\PostProcessing\Editor\Utils\EditorResources.cs" />
-    <Compile Include="Assets\DreamForestTree\PostProcessing\Editor\Models\ChromaticAberrationEditor.cs" />
-    <Compile Include="Assets\DreamForestTree\PostProcessing\Editor\PostProcessingFactory.cs" />
-    <Compile Include="Assets\DreamForestTree\PostProcessing\Editor\Models\ColorGradingModelEditor.cs" />
-    <Compile Include="Assets\DreamForestTree\PostProcessing\Editor\Utils\FxStyles.cs" />
-    <Compile Include="Assets\DreamForestTree\PostProcessing\Editor\PropertyDrawers\GetSetDrawer.cs" />
-    <Compile Include="Assets\DreamForestTree\PostProcessing\Editor\Models\ScreenSpaceReflectionModelEditor.cs" />
-    <Compile Include="Assets\DreamForestTree\PostProcessing\Editor\PropertyDrawers\TrackballGroupDrawer.cs" />
-    <Compile Include="Assets\DreamForestTree\PostProcessing\Editor\Monitors\ParadeMonitor.cs" />
-    <Compile Include="Assets\DreamForestTree\PostProcessing\Editor\Models\FogModelEditor.cs" />
-    <Compile Include="Assets\DreamForestTree\PostProcessing\Editor\Models\DepthOfFieldModelEditor.cs" />
-    <Compile Include="Assets\DreamForestTree\PostProcessing\Editor\PostProcessingModelEditor.cs" />
-    <Compile Include="Assets\DreamForestTree\PostProcessing\Editor\Utils\ReflectionUtils.cs" />
-    <Compile Include="Assets\DreamForestTree\PostProcessing\Editor\Models\VignetteModelEditor.cs" />
-    <Compile Include="Assets\DreamForestTree\PostProcessing\Editor\Models\DitheringModelEditor.cs" />
-    <Compile Include="Assets\DreamForestTree\PostProcessing\Editor\PostProcessingBehaviourEditor.cs" />
-    <Compile Include="Assets\DreamForestTree\PostProcessing\Editor\Models\DefaultPostFxModelEditor.cs" />
-    <Compile Include="Assets\EffectExamples\TutorialInfo\Scripts\Editor\ReadmeEditor.cs" />
-    <Compile Include="Assets\DreamForestTree\PostProcessing\Editor\Models\EyeAdaptationModelEditor.cs" />
-    <Compile Include="Assets\DreamForestTree\PostProcessing\Editor\PostProcessingInspector.cs" />
-    <Compile Include="Assets\DreamForestTree\PostProcessing\Editor\PostProcessingMonitor.cs" />
-    <Compile Include="Assets\DreamForestTree\Editor\SettingsPrompt.cs" />
-    <Compile Include="Assets\DreamForestTree\PostProcessing\Editor\Monitors\HistogramMonitor.cs" />
-    <Compile Include="Assets\DreamForestTree\PostProcessing\Editor\Attributes\PostProcessingModelEditorAttribute.cs" />
-    <Compile Include="Assets\DreamForestTree\PostProcessing\Editor\Models\BuiltinDebugViewsEditor.cs" />
-    <Compile Include="Assets\DreamForestTree\PostProcessing\Editor\Models\UserLutModelEditor.cs" />
-    <Compile Include="Assets\DreamForestTree\PostProcessing\Editor\Models\MotionBlurModelEditor.cs" />
-    <Compile Include="Assets\DreamForestTree\PostProcessing\Editor\Models\AmbientOcclusionModelEditor.cs" />
-    <Compile Include="Assets\DreamForestTree\PostProcessing\Editor\Models\GrainModelEditor.cs" />
-    <Compile Include="Assets\DreamForestTree\PostProcessing\Editor\Monitors\WaveformMonitor.cs" />
-    <Compile Include="Assets\DreamForestTree\PostProcessing\Editor\PropertyDrawers\MinDrawer.cs" />
-    <Compile Include="Assets\DreamForestTree\PostProcessing\Editor\Utils\EditorGUIHelper.cs" />
-    <Compile Include="Assets\DreamForestTree\PostProcessing\Editor\Models\AntialiasingModelEditor.cs" />
-    <Compile Include="Assets\DreamForestTree\PostProcessing\Editor\Monitors\VectorscopeMonitor.cs" />
-    <Compile Include="Assets\DreamForestTree\PostProcessing\Editor\Utils\CurveEditor.cs" />
+    <Compile Include="Assets\FreeAssets\DreamForestTree\PostProcessing\Editor\Models\BloomModelEditor.cs" />
+    <Compile Include="Assets\FreeAssets\DreamForestTree\PostProcessing\Editor\Utils\EditorResources.cs" />
+    <Compile Include="Assets\FreeAssets\DreamForestTree\PostProcessing\Editor\Models\ChromaticAberrationEditor.cs" />
+    <Compile Include="Assets\FreeAssets\DreamForestTree\PostProcessing\Editor\PostProcessingFactory.cs" />
+    <Compile Include="Assets\FreeAssets\DreamForestTree\PostProcessing\Editor\Models\ColorGradingModelEditor.cs" />
+    <Compile Include="Assets\FreeAssets\DreamForestTree\PostProcessing\Editor\Utils\FxStyles.cs" />
+    <Compile Include="Assets\FreeAssets\DreamForestTree\PostProcessing\Editor\PropertyDrawers\GetSetDrawer.cs" />
+    <Compile Include="Assets\FreeAssets\DreamForestTree\PostProcessing\Editor\Models\ScreenSpaceReflectionModelEditor.cs" />
+    <Compile Include="Assets\FreeAssets\DreamForestTree\PostProcessing\Editor\PropertyDrawers\TrackballGroupDrawer.cs" />
+    <Compile Include="Assets\FreeAssets\DreamForestTree\PostProcessing\Editor\Monitors\ParadeMonitor.cs" />
+    <Compile Include="Assets\FreeAssets\DreamForestTree\PostProcessing\Editor\Models\FogModelEditor.cs" />
+    <Compile Include="Assets\FreeAssets\DreamForestTree\PostProcessing\Editor\Models\DepthOfFieldModelEditor.cs" />
+    <Compile Include="Assets\FreeAssets\DreamForestTree\PostProcessing\Editor\PostProcessingModelEditor.cs" />
+    <Compile Include="Assets\FreeAssets\DreamForestTree\PostProcessing\Editor\Utils\ReflectionUtils.cs" />
+    <Compile Include="Assets\FreeAssets\DreamForestTree\PostProcessing\Editor\Models\VignetteModelEditor.cs" />
+    <Compile Include="Assets\FreeAssets\DreamForestTree\PostProcessing\Editor\Models\DitheringModelEditor.cs" />
+    <Compile Include="Assets\FreeAssets\DreamForestTree\PostProcessing\Editor\PostProcessingBehaviourEditor.cs" />
+    <Compile Include="Assets\FreeAssets\DreamForestTree\PostProcessing\Editor\Models\DefaultPostFxModelEditor.cs" />
+    <Compile Include="Assets\FreeAssets\EffectExamples\TutorialInfo\Scripts\Editor\ReadmeEditor.cs" />
+    <Compile Include="Assets\FreeAssets\DreamForestTree\PostProcessing\Editor\Models\EyeAdaptationModelEditor.cs" />
+    <Compile Include="Assets\FreeAssets\DreamForestTree\PostProcessing\Editor\PostProcessingInspector.cs" />
+    <Compile Include="Assets\FreeAssets\DreamForestTree\PostProcessing\Editor\PostProcessingMonitor.cs" />
+    <Compile Include="Assets\FreeAssets\DreamForestTree\Editor\SettingsPrompt.cs" />
+    <Compile Include="Assets\FreeAssets\DreamForestTree\PostProcessing\Editor\Monitors\HistogramMonitor.cs" />
+    <Compile Include="Assets\FreeAssets\DreamForestTree\PostProcessing\Editor\Attributes\PostProcessingModelEditorAttribute.cs" />
+    <Compile Include="Assets\FreeAssets\DreamForestTree\PostProcessing\Editor\Models\BuiltinDebugViewsEditor.cs" />
+    <Compile Include="Assets\FreeAssets\DreamForestTree\PostProcessing\Editor\Models\UserLutModelEditor.cs" />
+    <Compile Include="Assets\FreeAssets\DreamForestTree\PostProcessing\Editor\Models\MotionBlurModelEditor.cs" />
+    <Compile Include="Assets\FreeAssets\DreamForestTree\PostProcessing\Editor\Models\AmbientOcclusionModelEditor.cs" />
+    <Compile Include="Assets\FreeAssets\DreamForestTree\PostProcessing\Editor\Models\GrainModelEditor.cs" />
+    <Compile Include="Assets\FreeAssets\DreamForestTree\PostProcessing\Editor\Monitors\WaveformMonitor.cs" />
+    <Compile Include="Assets\FreeAssets\DreamForestTree\PostProcessing\Editor\PropertyDrawers\MinDrawer.cs" />
+    <Compile Include="Assets\FreeAssets\DreamForestTree\PostProcessing\Editor\Utils\EditorGUIHelper.cs" />
+    <Compile Include="Assets\FreeAssets\DreamForestTree\PostProcessing\Editor\Models\AntialiasingModelEditor.cs" />
+    <Compile Include="Assets\FreeAssets\DreamForestTree\PostProcessing\Editor\Monitors\VectorscopeMonitor.cs" />
+    <Compile Include="Assets\FreeAssets\DreamForestTree\PostProcessing\Editor\Utils\CurveEditor.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\EffectExamples\Editor\PackageManagerAssembly\PackageManagerAssembly.dll" />
-    <None Include="Assets\EffectExamples\Editor\PackageManagerAssembly\PackageImportList.txt" />
+    <None Include="Assets\FreeAssets\EffectExamples\Editor\PackageManagerAssembly\PackageManagerAssembly.dll" />
+    <None Include="Assets\FreeAssets\EffectExamples\Editor\PackageManagerAssembly\PackageImportList.txt" />
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2020.1.4f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
@@ -299,7 +299,7 @@
       <HintPath>C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\15.0\Editor\SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="PackageManagerAssembly">
-      <HintPath>Assets\EffectExamples\Editor\PackageManagerAssembly\PackageManagerAssembly.dll</HintPath>
+      <HintPath>Assets\FreeAssets\EffectExamples\Editor\PackageManagerAssembly\PackageManagerAssembly.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll</HintPath>
