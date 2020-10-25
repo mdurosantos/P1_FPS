@@ -135,24 +135,24 @@ public class ShootingGallery : MonoBehaviour
     private void GenerateTargetsList()
     {
         foreach(Transform child in transform)
+        {
+            if(child.childCount > 0)
+            {
+                foreach(Transform child_ in child)
                 {
-                    if(child.childCount > 0)
+                    if(child_.GetComponent<target_script>())
                     {
-                        foreach(Transform child_ in child)
-                        {
-                            if(child_.GetComponent<target_script>())
-                            {
-                                Debug.Log(child_);
-                                targets.Add(child_);
-                            }
-                        }
-
-                    }
-                    if(child.GetComponent<target_script>())
-                    {
-                        Debug.Log(child);
-                        targets.Add(child);
+                        Debug.Log(child_);
+                        targets.Add(child_);
                     }
                 }
+
+            }
+            if(child.GetComponent<target_script>())
+            {
+                Debug.Log(child);
+                targets.Add(child);
+            }
+        }
     }
 }
