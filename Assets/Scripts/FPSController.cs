@@ -44,6 +44,8 @@ public class FPSController : MonoBehaviour
     [SerializeField] float mHeightJump;
     [SerializeField] float mHalfLengthJump;
     [SerializeField] float mDownGravityMultiplier;
+    [SerializeField] private int maxExtraJumps = 0;
+    private int extraJumps;
 
     Animator weaponAnimator;
     private PlayerShoot shooting;
@@ -67,6 +69,7 @@ public class FPSController : MonoBehaviour
         mCharacterController = GetComponent<CharacterController>();
         weaponAnimator = GetComponentInChildren<Animator>();
         shooting = GetComponent<PlayerShoot>();
+        extraJumps = maxExtraJumps;
         
     }
 
@@ -100,7 +103,17 @@ public class FPSController : MonoBehaviour
 
     private bool CanJump()
     {
-        return Input.GetKeyDown(mJumpKey) && mOnGround;
+        if (Input.GetKeyDown(mJumpKey) && !mOnGround && extraJumps > 0)
+        {
+            extraJumps--;
+            return true;
+        }
+        else if (Input.GetKeyDown(mJumpKey) && mOnGround)
+        {
+            extraJumps = maxExtraJumps;
+            return true;
+        }
+        return false;
     }
 
     private void Move()

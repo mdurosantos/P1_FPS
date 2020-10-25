@@ -11,9 +11,9 @@ public class ShieldItem : Item
         base.Pick(player);
         HealthSystem healthSystem = player.GetComponent<HealthSystem>();
         if (healthSystem.getCurrentShield() != healthSystem.getMaxShield())
+        {
             healthSystem.TakeShield(shield);
-        
-        //SOUND
-        destroyItem();
+            destroyItem();
+        }
     }
 }

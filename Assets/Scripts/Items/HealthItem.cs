@@ -11,8 +11,10 @@ public class HealthItem : Item
         base.Pick(player);
         HealthSystem healthSystem = player.GetComponent<HealthSystem>();
         if (healthSystem.getCurrentHealth() != healthSystem.getMaxHealth())
+        {
             healthSystem.TakeHealth(health);
-        
-        destroyItem();
+            destroyItem();
+        }
+            
     }
 }

@@ -11,9 +11,10 @@ public class AmmoItem : Item
         base.Pick(player);
         PlayerShoot playerShoot = player.GetComponent<PlayerShoot>();
         if (playerShoot.getBulletsLeft() != playerShoot.getMaxBulletsLeft())
+        {
             playerShoot.TakeAmmo(ammo);
-
-        //SOUND
-        destroyItem();
+            destroyItem();
+        }
+            
     }
 }

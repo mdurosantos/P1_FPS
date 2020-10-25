@@ -8,6 +8,8 @@ public class AudioManager : MonoBehaviour
     public static AudioClip item;
     public static AudioClip enemy_weapon_shoot;
     public static AudioClip enemy_weapon_impact;
+    public static AudioClip door;
+    public static AudioClip explosion;
     static AudioSource audioSrc;
 
     void Start()
@@ -16,6 +18,8 @@ public class AudioManager : MonoBehaviour
         item = Resources.Load<AudioClip>("item");
         enemy_weapon_shoot = Resources.Load<AudioClip>("enemy_weapon_shoot");
         enemy_weapon_impact = Resources.Load<AudioClip>("enemy_weapon_impact");
+        door = Resources.Load<AudioClip>("door");
+        explosion = Resources.Load<AudioClip>("explosion");
         audioSrc = GetComponent<AudioSource>();
     }
 
@@ -25,16 +29,22 @@ public class AudioManager : MonoBehaviour
         switch (clip)
         {   
             case "shoot":
-                audioSrc.PlayOneShot(shoot, 1.0f);
+                audioSrc.PlayOneShot(shoot, 0.7f);
                 break;
             case "item":
                 audioSrc.PlayOneShot(item, 1.0f);
                 break;
             case "enemy_weapon_shoot":
-                audioSrc.PlayOneShot(enemy_weapon_shoot, 1.0f);
+                audioSrc.PlayOneShot(enemy_weapon_shoot, 0.7f);
                 break;
             case "enemy_weapon_impact":
-                audioSrc.PlayOneShot(enemy_weapon_impact, 1.0f);
+                audioSrc.PlayOneShot(enemy_weapon_impact, 0.7f);
+                break;
+            case "door":
+                audioSrc.PlayOneShot(door, 0.4f);
+                break;
+            case "explosion":
+                audioSrc.PlayOneShot(explosion, 1.0f);
                 break;
         }
     }

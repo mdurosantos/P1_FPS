@@ -30,8 +30,6 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private GameObject projectile;
     [SerializeField]
-    private Transform projectilePositioner;
-    [SerializeField]
     private float startTimeAlert = 5.0f;
     private float timeAlert;
     [SerializeField]
@@ -40,6 +38,7 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private float startTimeHit = 1.0f;
     private float timeHit;
+    
 
     private void Awake()
     {
@@ -179,7 +178,7 @@ public class Enemy : MonoBehaviour
         transform.LookAt(player.transform);
         if (timeShoot <= 0)
         {
-            Instantiate(projectile, projectilePositioner.position, projectilePositioner.rotation);
+            Instantiate(projectile, enemyPointer.position, enemyPointer.rotation);
             timeShoot = startTimeShoot;
         }
         else timeShoot -= Time.deltaTime;

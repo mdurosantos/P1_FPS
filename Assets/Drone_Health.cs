@@ -13,7 +13,8 @@ public class Drone_Health : MonoBehaviour
 
     [SerializeField]
     GameObject dropItem;
-
+    [SerializeField]
+    public GameObject impactParticles;
 
     public void Awake()
     {
@@ -31,6 +32,9 @@ public class Drone_Health : MonoBehaviour
         {
             if (dropItem != null)
                 Instantiate(dropItem, transform.position, Quaternion.identity);
+            GameObject clone = Instantiate(impactParticles, transform.position, transform.rotation);
+            Destroy(clone, clone.GetComponent<ParticleSystem>().main.duration);
+            AudioManager.PlaySound("explosion");
             Destroy(gameObject);
         }
     }

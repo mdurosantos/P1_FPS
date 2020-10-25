@@ -140,6 +140,11 @@
     <Compile Include="Assets\Drone_eye_damage.cs" />
     <Compile Include="Assets\FreeAssets\DreamForestTree\PostProcessing\Runtime\Models\AmbientOcclusionModel.cs" />
     <Compile Include="Assets\Drone_Health.cs" />
+    <Compile Include="Assets\Scripts\AutomaticDoor.cs" />
+    <Compile Include="Assets\Scripts\PlayerKey.cs" />
+    <Compile Include="Assets\Scripts\KeyDoor.cs" />
+    <Compile Include="Assets\Scripts\Items\KeyItem.cs" />
+    <Compile Include="Assets\Scripts\GameOverCollider.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Samples\Terrain Tools\0.1.0-preview\Terrain Assets\ThirdPartyNotices.txt" />
@@ -168,6 +173,7 @@
     <None Include="Assets\FreeAssets\DreamForestTree\PostProcessing\Resources\Shaders\FXAA.shader" />
     <None Include="Assets\FreeAssets\DreamForestTree\PostProcessing\Resources\Shaders\ScreenSpaceRaytrace.cginc" />
     <None Include="Assets\FreeAssets\DreamForestTree\PostProcessing\Resources\Shaders\Tonemapping.cginc" />
+    <None Include="Assets\FreeAssets\Models\Key\readME keys.txt" />
     <None Include="Assets\FreeAssets\DreamForestTree\PostProcessing\Resources\Shaders\Fog.shader" />
     <None Include="Assets\FreeAssets\DreamForestTree\PostProcessing\Editor Resources\Monitors\ParadeRender.shader" />
     <None Include="Assets\FreeAssets\DreamForestTree\PostProcessing\Resources\Shaders\MotionBlur.shader" />
