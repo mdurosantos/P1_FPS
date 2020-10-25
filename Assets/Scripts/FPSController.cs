@@ -36,6 +36,7 @@ public class FPSController : MonoBehaviour
     [SerializeField] bool mOnGround;
     [SerializeField] bool mContactCeiling;
     [SerializeField] float mRunMultiplier;
+    [SerializeField] float mJumpMultiplier;
     private bool running = false;
     float mVerticalSpeed = 0.0f;
     
@@ -132,7 +133,7 @@ public class FPSController : MonoBehaviour
 
     private void Jump(Vector3 lMovement)
     {
-        float gravity = -2 * mHeightJump * mMoveSpeed * mRunMultiplier * mMoveSpeed * mRunMultiplier / (mHalfLengthJump * mHalfLengthJump);
+        float gravity = -2 * mHeightJump * mMoveSpeed * mJumpMultiplier * mMoveSpeed * mJumpMultiplier / (mHalfLengthJump * mHalfLengthJump);
         if (mVerticalSpeed < 0) gravity *= mDownGravityMultiplier;
         mVerticalSpeed += gravity * Time.fixedDeltaTime;
         lMovement.y = mVerticalSpeed * Time.fixedDeltaTime + 0.5f * gravity * Time.deltaTime * Time.deltaTime;
@@ -149,7 +150,7 @@ public class FPSController : MonoBehaviour
 
         if (mDoJump)
         {
-            mVerticalSpeed = 2 * mHeightJump * mMoveSpeed * mRunMultiplier / mHalfLengthJump;
+            mVerticalSpeed = 2 * mHeightJump * mMoveSpeed * mJumpMultiplier / mHalfLengthJump;
             mDoJump = false;
         }
     }

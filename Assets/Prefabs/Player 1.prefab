@@ -225,7 +225,8 @@ MonoBehaviour:
   mRunKey: 304
   mOnGround: 0
   mContactCeiling: 0
-  mRunMultiplier: 1.5
+  mRunMultiplier: 3
+  mJumpMultiplier: 1.5
   mHeightJump: 2
   mHalfLengthJump: 4
   mDownGravityMultiplier: 3

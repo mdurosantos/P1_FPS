@@ -16659,6 +16659,10 @@ PrefabInstance:
       propertyPath: bulletsPool
       value: 
       objectReference: {fileID: 792227164}
+    - target: {fileID: 5640430804819940511, guid: bbf57fcf39042924aa8d8e86251e3455, type: 3}
+      propertyPath: mRunMultiplier
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5640430805443587573, guid: bbf57fcf39042924aa8d8e86251e3455, type: 3}
       propertyPath: m_Layer
       value: 10
