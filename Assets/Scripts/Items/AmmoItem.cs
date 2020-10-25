@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class AmmoItem : Item
 {
+    [SerializeField]
+    int ammo = 50;
     public override void Pick(FPSController player)
     {
         base.Pick(player);
-        //Si player está 100% 
-        //      Nada
-        //else
-        //      Suma vida al player
-        Debug.Log("Item ammo picked");
+        PlayerShoot playerShoot = player.GetComponent<PlayerShoot>();
+        if (playerShoot.getBulletsLeft() != playerShoot.getMaxBulletsLeft())
+            playerShoot.TakeAmmo(ammo);
+
+        //SOUND
         destroyItem();
     }
 }

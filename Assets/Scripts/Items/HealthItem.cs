@@ -5,15 +5,14 @@ using UnityEngine;
 public class HealthItem : Item
 {
     [SerializeField]
-    float health = 50.0f; //mellor en scriptable objects
+    float health = 50.0f;
     public override void Pick(FPSController player)
     {
         base.Pick(player);
-        //Si player está 100% 
-        //      Nada
-        //else
-        //      Suma vida al player
-        Debug.Log("Item health picked");
+        HealthSystem healthSystem = player.GetComponent<HealthSystem>();
+        if (healthSystem.getCurrentHealth() != healthSystem.getMaxHealth())
+            healthSystem.TakeHealth(health);
+        
         destroyItem();
     }
 }

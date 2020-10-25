@@ -13,7 +13,8 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] Transform gunExpeller;
     [SerializeField] float initialSpeed_x = 50.0f;
     [SerializeField] float initialSpeed_y = 100.0f;
-    [SerializeField] float fireRate = 1.0f;
+    [SerializeField] float fireRate = 0.15f;
+    float nextFire = 0;
     Animator weaponAnimator;
 
 
@@ -21,8 +22,10 @@ public class PlayerShoot : MonoBehaviour
 
     [SerializeField] ObjectPool decalsPool;
     [SerializeField] ObjectPool bulletsPool;
-    float nextFire = 0.0f;
+    
+    [SerializeField]
     private int bulletsInMag = 32;
+    [SerializeField]
     private int bulletsLeft = 150;
     private bool recharging = false;
     private bool shooting = false;
@@ -50,18 +53,20 @@ public class PlayerShoot : MonoBehaviour
 
         if (Input.GetMouseButton(0) && bulletsInMag > 0)
         {
-            if (Time.time > nextFire)
+            if (nextFire<=0)
             {
-                nextFire = Time.time + fireRate;
+                nextFire = fireRate;
                 Shoot();
             }
         }
-
+       
         else
         {
             shooting = false;
             weaponAnimator.SetBool("shooting", false);
         }
+
+        nextFire -= Time.deltaTime;
     }
 
     private void Shoot()
@@ -75,6 +80,7 @@ public class PlayerShoot : MonoBehaviour
                 bulletsInMag--;
                 ExpellBulets();
                 ShootParticles();
+                AudioManager.PlaySound("shoot");
 
                 if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0.0f)), out RaycastHit hitInfo, weaponStats.maxWeaponDist, layerMask))
                 {
@@ -82,6 +88,10 @@ public class PlayerShoot : MonoBehaviour
                     if (hitInfo.transform.gameObject.GetComponent<DamageTaker>() != null)
                     {
                         hitInfo.transform.gameObject.GetComponent<DamageTaker>().TakeDamage(weaponStats.damage);
+                    }
+                    else
+                    {
+                        Decal(hitInfo.point, hitInfo.normal);
                     }
                 }
 
@@ -116,8 +126,13 @@ public class PlayerShoot : MonoBehaviour
 
     private void ImpactParticles(Vector3 point, Vector3 normal)
     {
-        Instantiate(weaponStats.impactParticles, point, Quaternion.LookRotation(normal));
+        GameObject clone = Instantiate(weaponStats.impactParticles, point, Quaternion.LookRotation(normal));
+        Destroy(clone, clone.GetComponent<ParticleSystem>().main.duration);
+        
+    }
 
+    private void Decal(Vector3 point, Vector3 normal)
+    {
         var decal = decalsPool.GetNextElement();
         decal.transform.position = point;
         decal.transform.forward = normal;
@@ -156,13 +171,33 @@ public class PlayerShoot : MonoBehaviour
     {
         ammoText.text = bulletsInMag + " / " + bulletsLeft;
         if (bulletsLeft == 0 && bulletsInMag == 0)
-        {
             ammoText.color = Color.red;
-        }
+        
+        else
+            ammoText.color = Color.white;
     }
 
     public bool getShooting()
     {
         return shooting;
+    }
+
+    public void TakeAmmo(int ammo)
+    {
+        bulletsLeft += ammo;
+        if (bulletsLeft > weaponStats.maxBulletsLeft) bulletsLeft = weaponStats.maxBulletsLeft;
+        UpdateBulletsCounter();
+        if (bulletsInMag == 0)
+            Recharge();
+    }
+
+    public float getBulletsLeft()
+    {
+        return bulletsLeft;
+    }
+
+    public float getMaxBulletsLeft()
+    {
+        return weaponStats.maxBulletsLeft;
     }
 }

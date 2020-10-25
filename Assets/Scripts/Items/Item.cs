@@ -12,6 +12,6 @@ public class Item : MonoBehaviour
     public void destroyItem()
     {
         Destroy(gameObject);
-        //Sound
+        AudioManager.PlaySound("item");
     }
 }

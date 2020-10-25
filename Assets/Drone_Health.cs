@@ -11,6 +11,9 @@ public class Drone_Health : MonoBehaviour
     private GameObject healthBarUI;
     private Slider slider;
 
+    [SerializeField]
+    GameObject dropItem;
+
 
     public void Awake()
     {
@@ -26,7 +29,8 @@ public class Drone_Health : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            //DIE action
+            if (dropItem != null)
+                Instantiate(dropItem, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }

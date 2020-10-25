@@ -422,9 +422,9 @@ GameObject:
   - component: {fileID: 5892645263257068598}
   - component: {fileID: 757766234}
   - component: {fileID: 757766244}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PA_DroneWingRight
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -533,9 +533,9 @@ GameObject:
   - component: {fileID: 5892645263257068600}
   - component: {fileID: 757766236}
   - component: {fileID: 757766245}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PA_DroneWingLeft
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -642,9 +642,10 @@ GameObject:
   - component: {fileID: 5892645263259363032}
   - component: {fileID: 5892645263255938810}
   - component: {fileID: 5892645263257068602}
-  m_Layer: 0
+  - component: {fileID: 9164590453955702845}
+  m_Layer: 9
   m_Name: PA_DroneBladeRight
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -712,6 +713,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &9164590453955702845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5892645263259073272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaff20af7e7c12a4a863879c9889c8cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drone: {fileID: 5892645263259363036}
+  damageMultiplier: 0
 --- !u!1 &5892645263259073274
 GameObject:
   m_ObjectHideFlags: 0
@@ -723,9 +738,10 @@ GameObject:
   - component: {fileID: 5892645263259363034}
   - component: {fileID: 5892645263255938812}
   - component: {fileID: 5892645263257068604}
-  m_Layer: 0
+  - component: {fileID: 7809114165505589777}
+  m_Layer: 9
   m_Name: PA_DroneBladeLeft
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -793,6 +809,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &7809114165505589777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5892645263259073274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaff20af7e7c12a4a863879c9889c8cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drone: {fileID: 5892645263259363036}
+  damageMultiplier: 0
 --- !u!1 &5892645263259073276
 GameObject:
   m_ObjectHideFlags: 0
@@ -804,9 +834,10 @@ GameObject:
   - component: {fileID: 5892645263259363036}
   - component: {fileID: 5892645263249541438}
   - component: {fileID: 757766226}
-  m_Layer: 0
+  - component: {fileID: 4807800665280348879}
+  m_Layer: 9
   m_Name: PA_Drone_Alejandro
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -824,6 +855,7 @@ Transform:
   m_Children:
   - {fileID: 5892645263259363038}
   - {fileID: 2063765131}
+  - {fileID: 2371911078328633924}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -858,6 +890,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e31fd8ef2a15c78438afaee522d1019f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropItem: {fileID: 0}
+--- !u!114 &4807800665280348879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5892645263259073276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd156106839f3084c845a023403577e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0
+  enemyPointer: {fileID: 2371911078328633924}
+  patrolPositions:
+  - {x: -9.5, y: 0, z: -21.5}
+  - {x: -9.5, y: 0, z: -30}
+  - {x: -20.5, y: 0, z: -20.5}
+  - {x: -20.5, y: 0, z: -30}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1559
+  alertDistance: 10
+  maxDistance: 20
+  minChaseDistance: 3
+  maxChaseDistance: 10
+  maxShootDistance: 6
+  player: {fileID: 0}
+  projectile: {fileID: 3984941707682801136, guid: 568ea8c7fef1d7e44bd4b5fd0dd9b7f1, type: 3}
+  projectilePositioner: {fileID: 2371911078328633924}
+  startTimeAlert: 5
+  startTimeShoot: 1
+  startTimeHit: 1
 --- !u!1 &5892645263259073278
 GameObject:
   m_ObjectHideFlags: 0
@@ -871,9 +937,9 @@ GameObject:
   - component: {fileID: 5892645263257068606}
   - component: {fileID: 757766228}
   - component: {fileID: 757766230}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PA_Drone
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -970,3 +1036,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   drone: {fileID: 5892645263259363036}
   damageMultiplier: 1.2
+--- !u!1 &7896856604366058239
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2371911078328633924}
+  m_Layer: 9
+  m_Name: Tip
+  m_TagString: Enemy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2371911078328633924
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7896856604366058239}
+  m_LocalRotation: {x: 0.01745245, y: 0, z: 0, w: 0.99984777}
+  m_LocalPosition: {x: 0, y: 1.3, z: 0.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5892645263259363036}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
