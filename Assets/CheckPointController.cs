@@ -15,8 +15,6 @@ public class CheckPointController : MonoBehaviour
         {
             instance = this;
         }
-
-        Debug.Log(instance);
         
         //GetAllCheckPoints();
     }
@@ -34,9 +32,12 @@ public class CheckPointController : MonoBehaviour
     public void changeCheckPoint(CheckPoint checkPoint)
     {
         //if(checkPoints.Contains(checkPoint))
-        if(!actual_checkPoint.Equals(checkPoint))
+        if(actual_checkPoint != null)
         {
-            actual_checkPoint = checkPoint;
+            if(!actual_checkPoint.Equals(checkPoint))
+            {
+                actual_checkPoint = checkPoint;
+            }
         }
     }
 
