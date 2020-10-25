@@ -6,6 +6,6 @@ public class droneController : MonoBehaviour, DamageTaker
 {
     public void TakeDamage(float damage)
     {
-        Debug.Log("Damge taken by Drone");
+        Debug.Log("Damage taken by Drone");
     }
 }

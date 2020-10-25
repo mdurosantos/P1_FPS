@@ -14,7 +14,7 @@ public class Drone_eye_damage : MonoBehaviour, DamageTaker
 
     public void TakeDamage(float damage)
     {
-        
+        drone.GetComponent<Enemy>().setHIT();
         drone.GetComponent<Drone_Health>().DealDamage(damage * damageMultiplier);
         //drone.GetComponent<Drone_Health>().DealDamage(damage * damageMultiplier);
     }
